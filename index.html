@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotenofony Gift Cards</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            color: #222;
+        }
+        .container {
+            max-width: 420px;
+            margin: 32px auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(60,60,120,0.12);
+            padding: 32px 24px 24px 24px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.1em;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            color: #2d2d7f;
+        }
+        .desc {
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 18px;
+            color: #444;
+        }
+        .card-list {
+            margin: 24px 0 16px 0;
+        }
+        .card-item {
+            display: flex;
+            align-items: center;
+            background: #f3f6ff;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(60,60,120,0.04);
+        }
+        .card-info {
+            flex: 1;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #2d2d7f;
+        }
+        .card-price {
+            font-size: 1em;
+            color: #1a7f37;
+            font-weight: 700;
+        }
+        .discount {
+            display: inline-block;
+            background: #e0ffe0;
+            color: #1a7f37;
+            border-radius: 8px;
+            padding: 2px 8px;
+            font-size: 0.95em;
+            margin-left: 8px;
+        }
+        .buy-form {
+            margin-top: 24px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 14px 14px 14px;
+            box-shadow: 0 2px 8px rgba(60,60,120,0.04);
+        }
+        .buy-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+            color: #2d2d7f;
+        }
+        .buy-qty {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .qty-btn {
+            width: 36px;
+            height: 36px;
+            font-size: 1.5em;
+            border: none;
+            background: #e0e7ff;
+            color: #2d2d7f;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 8px;
+            transition: background 0.2s;
+        }
+        .qty-btn:active {
+            background: #c7d2fe;
+        }
+        .buy-input {
+            width: 60px;
+            text-align: center;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: 1px solid #c7d2fe;
+            padding: 8px;
+        }
+        .buy-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #2d2d7f 0%, #6c63ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            padding: 14px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(60,60,120,0.10);
+            transition: background 0.2s;
+        }
+        .buy-btn:hover {
+            background: linear-gradient(90deg, #6c63ff 0%, #2d2d7f 100%);
+        }
+        .result-block, .timer-block, .order-status {
+            margin-top: 18px;
+            background: #e0e7ff;
+            border-radius: 10px;
+            padding: 12px;
+            color: #2d2d7f;
+            font-size: 1.05em;
+        }
+        .profile-btn {
+            display: block;
+            width: 100%;
+            margin: 18px 0 0 0;
+            background: #f3f6ff;
+            color: #2d2d7f;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .profile-btn:hover {
+            background: #e0e7ff;
+        }
+        .profile-block {
+            margin-top: 24px;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 14px 14px 14px;
+            box-shadow: 0 2px 8px rgba(60,60,120,0.04);
+        }
+        .profile-title {
+            font-weight: 700;
+            color: #2d2d7f;
+            margin-bottom: 8px;
+        }
+        .order-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .order-item {
+            background: #e0e7ff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .order-codes {
+            font-family: monospace;
+            color: #1a7f37;
+            font-size: 1em;
+            margin-top: 4px;
+        }
+        .review-btn {
+            margin-top: 8px;
+            background: #fff;
+            color: #2d2d7f;
+            border: 1px solid #c7d2fe;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.98em;
+            cursor: pointer;
+        }
+        .support {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 0.98em;
+        }
+        .support a {
+            color: #2d2d7f;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kotenofony Gift Cards</h1>
+        <div class="desc">
+            Магазин подарочных карт Apple номиналом $2.<br>
+            Быстро, удобно и безопасно через Telegram!
+        </div>
+        <div class="card-list">
+            <div class="card-item">
+                <div class="card-info">
+                    <div class="card-title">Apple Gift Card $2</div>
+                    <div class="card-price">200 ₽ <span class="discount">-2% скидка сегодня!</span></div>
+                </div>
+            </div>
+        </div>
+        <form class="buy-form" id="buyForm" autocomplete="off" onsubmit="return false;">
+            <label class="buy-label" for="count">Сколько карт вы хотите купить?</label>
+            <div class="buy-qty">
+                <button type="button" class="qty-btn" id="minusBtn">-</button>
+                <input class="buy-input" type="number" id="count" name="count" min="1" max="25" value="1" required>
+                <button type="button" class="qty-btn" id="plusBtn">+</button>
+            </div>
+            <button class="buy-btn" type="submit">Заказать</button>
+            <div id="timerBlock" class="timer-block" style="display:none"></div>
+            <div id="result" class="result-block" style="display:none"></div>
+            <div id="orderStatus" class="order-status" style="display:none"></div>
+        </form>
+        <button class="profile-btn" id="profileBtn">Профиль и мои заказы</button>
+        <div id="profileBlock" class="profile-block" style="display:none">
+            <div class="profile-title">Мои заказы</div>
+            <ul class="order-list" id="orderList"></ul>
+        </div>
+        <div class="support">
+            Техподдержка: <a href="https://t.me/kotenofony" target="_blank">@kotenofony</a>
+        </div>
+    </div>
+    <script>
+        const pricePerCard = 200;
+        const discount = -2; // %
+        const maxCount = 25;
+        const bankDetails = "2202 2000 0000 0000 (Сбербанк)";
+        // Имитация базы заказов (localStorage)
+        function getOrders() {
+            return JSON.parse(localStorage.getItem('orders') || '[]');
+        }
+        function saveOrders(orders) {
+            localStorage.setItem('orders', JSON.stringify(orders));
+        }
+        // Кнопки +/-
+        const countInput = document.getElementById('count');
+        document.getElementById('minusBtn').onclick = () => {
+            let v = parseInt(countInput.value) || 1;
+            if (v > 1) countInput.value = v - 1;
+        };
+        document.getElementById('plusBtn').onclick = () => {
+            let v = parseInt(countInput.value) || 1;
+            if (v < maxCount) countInput.value = v + 1;
+        };
+        // Покупка
+        document.getElementById('buyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const count = Math.max(1, Math.min(maxCount, parseInt(countInput.value)));
+            const discountedPrice = Math.round(pricePerCard * (1 + discount/100));
+            const total = discountedPrice * count;
+            const timerBlock = document.getElementById('timerBlock');
+            const result = document.getElementById('result');
+            const orderStatus = document.getElementById('orderStatus');
+            timerBlock.style.display = 'block';
+            result.style.display = 'none';
+            orderStatus.style.display = 'none';
+            // Таймер подтверждения продавца (1 минута)
+            let timer = 60;
+            timerBlock.innerHTML = "Ожидайте подтверждения продавца: <b><span id='timerVal'>60</span> сек.</b>";
+            const interval = setInterval(() => {
+                timer--;
+                document.getElementById('timerVal').textContent = timer;
+                if (timer <= 0) {
+                    clearInterval(interval);
+                    timerBlock.style.display = 'none';
+                    result.innerHTML = `<b>Время ожидания истекло. Заказ отменён.</b>`;
+                    result.style.display = 'block';
+                }
+            }, 1000);
+            // Показываем оплату после таймера (имитация подтверждения продавца)
+            setTimeout(() => {
+                if (timer > 0) {
+                    clearInterval(interval);
+                    timerBlock.style.display = 'none';
+                    result.innerHTML = `
+                        <b>Ваш заказ:</b> ${count} x Apple Gift Card $2<br>
+                        <b>Итого к оплате:</b> ${total} ₽<br>
+                        <b>Реквизиты для оплаты:</b><br>
+                        <span style="user-select:all">${bankDetails}</span><br>
+                        <br>
+                        После оплаты нажмите кнопку <b>Я оплатил</b>.
+                        <br><button class="buy-btn" id="paidBtn">Я оплатил</button>
+                    `;
+                    result.style.display = 'block';
+                    document.getElementById('paidBtn').onclick = () => {
+                        result.style.display = 'none';
+                        orderStatus.innerHTML = "Ожидайте подтверждения оплаты продавцом (минимум 2 минуты)...";
+                        orderStatus.style.display = 'block';
+                        setTimeout(() => {
+                            // Имитация выдачи кодов
+                            const codes = [];
+                            for(let i=0;i<count;i++) codes.push('XXXX-XXXX-XXXX-' + Math.floor(1000+Math.random()*9000));
+                            orderStatus.innerHTML = `Ваш заказ выполнен!<br>Коды карт:<br><span class="order-codes">${codes.join('<br>')}</span><br>
+                            <button class="review-btn" id="reviewBtn">Оставить отзыв</button>`;
+                            // Сохраняем заказ в профиль
+                            const orders = getOrders();
+                            orders.push({count, codes, date: new Date().toLocaleString()});
+                            saveOrders(orders);
+                            document.getElementById('reviewBtn').onclick = () => {
+                                let text = prompt('Введите ваш отзыв:');
+                                if (text) alert('Спасибо за отзыв!');
+                            };
+                        }, 120000); // 2 минуты
+                    };
+                }
+            }, 60000); // 1 минута ожидания продавца
+        });
+        // Профиль и заказы
+        document.getElementById('profileBtn').onclick = () => {
+            const block = document.getElementById('profileBlock');
+            const list = document.getElementById('orderList');
+            const orders = getOrders();
+            list.innerHTML = '';
+            if (orders.length === 0) {
+                list.innerHTML = '<li class="order-item">У вас пока нет заказов.</li>';
+            } else {
+                orders.slice().reverse().forEach((order, idx) => {
+                    list.innerHTML += `<li class="order-item">
+                        <b>Заказ #${orders.length-idx}</b> (${order.date})<br>
+                        Карт: ${order.count}<br>
+                        <span class="order-codes">${order.codes.join('<br>')}</span>
+                        <br><button class="review-btn" onclick="alert('Спасибо за отзыв!')">Оставить отзыв</button>
+                    </li>`;
+                });
+            }
+            block.style.display = block.style.display === 'block' ? 'none' : 'block';
+        };
+    </script>
+</body>
+</html>
