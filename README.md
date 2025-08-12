@@ -1,1 +1,0 @@
-# kotenofony-miniapp
